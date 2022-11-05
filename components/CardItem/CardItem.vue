@@ -47,8 +47,7 @@ export default {
 }
 
 .card-button:hover{
-  background-color: #334157;
-  color: #4dbe7f;
+  background-color: #485a6f;
 }
 
 .card-price-wrapper{

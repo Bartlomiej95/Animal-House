@@ -2,7 +2,7 @@
   <div class="wrapper-main">
     <div class="wrapper-add-btn">
       <h3>Dodaj nowy</h3>
-      <button class="add-btn">+</button>
+      <button class="add-btn"><NuxtLink to="/add-new">+</NuxtLink></button>
     </div>
     <div class="wrapper-house-item">
       <CardItem
