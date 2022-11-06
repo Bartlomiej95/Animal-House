@@ -1,8 +1,8 @@
 <template>
   <header class="wrapper">
     <div class="header-top">
-      <h4 class="header-top-email">email: example@example.com</h4>
-      <h4 class="header-top-tel">tel: 555 555 555</h4>
+      <h4 class="header-top-email">email: <span>example@example.com</span></h4>
+      <h4 class="header-top-tel">tel: <span>555 555 555</span></h4>
     </div>
     <div class="header-bottom">
       <div class="logo-wrapper">
@@ -114,4 +114,7 @@ export default {
     height: 70px;
   }
 
+  .header-top span{
+    color: #4dbe7f;
+  }
 </style>
