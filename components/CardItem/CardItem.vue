@@ -34,6 +34,11 @@ export default {
   justify-content: center;
   align-content: center;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  cursor: pointer;
+}
+
+.card-wrapper:hover{
+  box-shadow: 0px 0px 10px 0px rgba(77, 190, 127, 1);
 }
 
 .card-name{
