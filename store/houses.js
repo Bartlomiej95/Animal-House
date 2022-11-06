@@ -2,6 +2,8 @@ import {houseForAnimals} from "@/data/data";
 
 export const state = () => ({
   items: [...houseForAnimals],
+  choosenCategory: '', //after user click in category in navigation,
+  sortedItems: [],
 });
 
 
@@ -13,7 +15,7 @@ export const mutations = {
 
   sortHouses(state, { sortKey, asc }) {
     const items = this.state.houses.items;
-    console.log(items, asc);
+
     items.sort((a,b) => {
       let result = 0;
       if(!asc){
@@ -27,4 +29,12 @@ export const mutations = {
     this.state.houses.items = items;
   },
 
+
+  sortByCategory(state, category) {
+    this.state.houses.choosenCategory = category;
+    const items = this.state.houses.items;
+
+    const result = items.filter(item => item.category === category);
+    this.state.houses.sortedItems = result;
+  }
 }

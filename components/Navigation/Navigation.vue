@@ -3,18 +3,33 @@
     <ol>
       <li>Gotowe domki
         <ul>
-          <li>Domki na drzewie</li>
-          <li>Domki na ziemi</li>
+          <li @click="sortByCategory(category.ONTREE)">Domki na drzewie</li>
+          <li @click="sortByCategory(category.ONTHEGROUND)">Domki na ziemi</li>
         </ul>
       </li>
-      <li>
+      <li @click="sortByCategory(category.HOUSEPROJECT)">
         Domki na zamówienie
       </li>
     </ol>
   </div>
 </template>
 <script>
+import {Category} from "@/data/house-category";
 
+export default {
+  data(){
+    return{
+      category: Category,
+      houses: this.$store.state.houses.items,
+    }
+  },
+
+  methods: {
+    sortByCategory(category){
+      this.$store.commit('houses/sortByCategory', category)
+    },
+  }
+}
 </script>
 
 <style scoped>

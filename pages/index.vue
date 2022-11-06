@@ -13,7 +13,7 @@ import Main from '@/components/Main/Main';
 
 export default {
   name: 'IndexPage',
-  components: {Header,Navigation, Main}
+  components: {Header,Navigation, Main},
 }
 </script>
 <style scoped>

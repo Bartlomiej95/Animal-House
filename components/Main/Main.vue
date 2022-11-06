@@ -16,11 +16,20 @@
 <script>
 import CardItem from '@/components/CardItem/CardItem';
 export default {
+  data(){
+    return{
+      choosenCategory: this.$store.state.houses.choosenCategory,
+    }
+  },
   components: {CardItem},
   computed: {
     houses() {
-      return this.$store.state.houses.items;
-    }
+      if(this.$store.state.houses.choosenCategory){
+        return this.$store.state.houses.sortedItems;
+      } else{
+        return this.$store.state.houses.items;
+      }
+    },
   }
 }
 </script>
