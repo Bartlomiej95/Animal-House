@@ -1,6 +1,10 @@
 <template>
   <div class="wrapper-main">
     <div class="wrapper-add-btn">
+      <h3>Zmień walutę: </h3>
+      <select v-model="actualCurrency" @change="checkExchangeRate(actualCurrency)">
+        <option v-for="item in currency" :value="item.currency">{{item.currency}}</option>
+      </select>
       <h3>Dodaj nowy</h3>
       <button class="add-btn"><NuxtLink class="add-btn-a" to="/add-new">+</NuxtLink></button>
     </div>
@@ -9,16 +13,23 @@
         v-for="house in houses"
         v-bind:key="house.id"
         :house="house"
+        :exchangeRate="exchangeRate"
+        :currencySymbol="actualCurrency"
       />
     </div>
   </div>
 </template>
 <script>
 import CardItem from '@/components/CardItem/CardItem';
+import {currencyData} from "@/data/currency";
+
 export default {
   data(){
     return{
       choosenCategory: this.$store.state.houses.choosenCategory,
+      currency: [...currencyData],
+      actualCurrency: 'PLN',
+      exchangeRate: 1,
     }
   },
   components: {CardItem},
@@ -43,6 +54,17 @@ export default {
         // return this.$store.state.houses.items;
       }
     },
+  },
+  methods:{
+    async checkExchangeRate(currency) {
+      if(currency === 'PLN'){
+        return this.exchangeRate = 1;
+      }
+      const rate = await fetch(`http://api.nbp.pl/api/exchangerates/rates/a/${currency}/?format=json`)
+        .then(res => res.json())
+        .then(res => res.rates[0].mid);
+      this.exchangeRate = rate;
+    }
   }
 }
 </script>
@@ -64,11 +86,20 @@ export default {
     margin-right: 20px;
   }
 
+  .wrapper-add-btn h3 {
+    margin-right: 10px;
+  }
+
+  .wrapper-add-btn select {
+    margin-right: 30px;
+    padding: 5px;
+    border-radius: 10px;
+  }
+
   .add-btn{
     width: 40px;
     height: 40px;
     padding: 5px;
-    margin-left: 10px;
     border-radius: 50%;
     border: 1px solid;
     background-color: #4dbe7f;

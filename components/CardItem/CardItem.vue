@@ -4,13 +4,23 @@
     <img class="card-img" src="https://picsum.photos/60" />
     <button class="card-button">Zamów</button>
     <div class="card-price-wrapper">
-      <h2 class="card-price-amount">{{house.price}} {{house.currency}}</h2>
+      <h2 class="card-price-amount">{{this.countCurrencyPrice}} {{this.currencySymbol}}</h2>
     </div>
   </div>
 </template>
 <script>
 export default {
-  props: ['house'],
+  data(){
+    return{
+      exchangeRatePrice: this.house.price,
+    }
+  },
+  props: ['house', 'exchangeRate', 'currencySymbol'],
+  computed: {
+    countCurrencyPrice(){
+      return this.exchangeRatePrice = (this.house.price * this.exchangeRate).toFixed(2);
+    }
+  }
 }
 </script>
 <style scoped>
