@@ -8,8 +8,9 @@
       <div class="logo-wrapper">
        <Logo />
       </div>
-      <div>
+      <div class="search-wrapper">
         <input class="search-input" placeholder="Wyszukaj"/>
+        <NuxtLink to="/searching">Wyszukiwanie zaawansowane</NuxtLink>
       </div>
       <div class="wrapper-shop-icon">
         <ShopIcon class="shop-icon" />
@@ -56,6 +57,24 @@ export default {
     align-items: center;
     background-color: #f8f8f8;
     padding: 0 10px;
+  }
+
+  .search-wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .search-wrapper a{
+    color: black;
+    font-size: 14px;
+    margin-left: 5px;
+  }
+
+  .search-wrapper a:hover{
+    color: gray;
   }
 
   .search-input{
