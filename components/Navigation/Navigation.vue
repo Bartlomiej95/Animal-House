@@ -48,19 +48,27 @@ export default {
     line-height:2em;
     text-align:center;
     color: white;
+
   }
 
   .nav li{
-    display: block;
+    float: left;
+    width: 250px;
     cursor: pointer;
     margin: 0 auto;
-    padding: 0 10px;
     text-transform: uppercase;
     line-height: 80px;
+    height: 80px;
+  }
+
+  .nav ol > li:first-child{
+    margin-left: 0;
   }
 
   .nav ol > li > ul{
     padding: 0;
+    background-color: #344860;
+    list-style-type:none;
   }
 
   .nav ol > li {
@@ -72,8 +80,20 @@ export default {
     background-color: #334157;
   }
 
+  .nav ol >li:hover > ul {
+    display: block;
+  }
+
   .nav ul {
+    display: none;
     color: white;
+    padding: 0;
+    margin:0;
+  }
+
+  .nav ol > li > ul > li {
+    position: relative;
+    background-color: #344860;
   }
 
 
