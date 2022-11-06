@@ -10,7 +10,9 @@
       <li @click="sortByCategory(category.HOUSEPROJECT)">
         Domki na zamówienie
       </li>
+      <li @click="sortByCategory('')">Wszystkie domki</li>
     </ol>
+
   </div>
 </template>
 <script>

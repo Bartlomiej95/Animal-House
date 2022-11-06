@@ -35,6 +35,10 @@ export const mutations = {
     this.state.houses.choosenCategory = category;
     const items = this.state.houses.items;
 
+    if(category === ''){
+      return
+    }
+
     const result = items.filter(item => item.category === category);
     this.state.houses.sortedItems = result;
   },
