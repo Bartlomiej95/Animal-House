@@ -9,7 +9,7 @@
        <nuxt-link to="/"><Logo /></nuxt-link>
       </div>
       <div class="search-wrapper">
-        <input class="search-input" placeholder="Wyszukaj"/>
+        <input class="search-input" placeholder="Wyszukaj" v-model="searchingValue" @keydown="changeSearchingValue(searchingValue)"/>
         <NuxtLink to="/searching">Wyszukiwanie zaawansowane</NuxtLink>
       </div>
       <div class="wrapper-shop-icon">
@@ -24,9 +24,19 @@ import Logo from 'assets/logo.svg';
 import ShopIcon from '@/assets/shoping.svg';
 
 export default {
+  data(){
+    return{
+      searchingValue: '',
+    }
+  },
   components: {
     Logo,
     ShopIcon
+  },
+  methods: {
+    changeSearchingValue(text) {
+      return this.$store.commit('houses/changeSearchingValue', text);
+    }
   }
 }
 

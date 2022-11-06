@@ -25,9 +25,22 @@ export default {
   computed: {
     houses() {
       if(this.$store.state.houses.choosenCategory){
-        return this.$store.state.houses.sortedItems;
+        //case when we get houses from choosen category
+        const results = this.$store.state.houses.sortedItems;
+        const searchingResults = results.filter(item =>{
+          return item.name.toLowerCase().includes(this.$store.state.houses.searchingValue) ||
+            item.price.toString().includes(this.$store.state.houses.searchingValue)
+        });
+        return searchingResults
       } else{
-        return this.$store.state.houses.items;
+        //case when we get all houses (without choose any category)
+        const results = this.$store.state.houses.items;
+        const searchingResults = results.filter(item =>{
+          return item.name.toLowerCase().includes(this.$store.state.houses.searchingValue) ||
+            item.price.toString().includes(this.$store.state.houses.searchingValue)
+        });
+        return searchingResults
+        // return this.$store.state.houses.items;
       }
     },
   }
@@ -73,6 +86,4 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
   }
-
-
 </style>

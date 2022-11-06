@@ -4,6 +4,7 @@ export const state = () => ({
   items: [...houseForAnimals],
   choosenCategory: '', //after user click in category in navigation,
   sortedItems: [],
+  searchingValue: '',
 });
 
 
@@ -36,5 +37,9 @@ export const mutations = {
 
     const result = items.filter(item => item.category === category);
     this.state.houses.sortedItems = result;
+  },
+
+  changeSearchingValue(state, text) {
+    this.state.houses.searchingValue = text;
   }
 }
