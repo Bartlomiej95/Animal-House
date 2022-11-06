@@ -6,7 +6,7 @@
     </div>
     <div class="header-bottom">
       <div class="logo-wrapper">
-       <Logo />
+       <nuxt-link to="/"><Logo /></nuxt-link>
       </div>
       <div class="search-wrapper">
         <input class="search-input" placeholder="Wyszukaj"/>
