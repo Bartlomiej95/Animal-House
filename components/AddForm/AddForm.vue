@@ -37,19 +37,16 @@ export default {
   },
   methods: {
     addNew(house){
-      console.log(house);
       this.validate(house);
       if(this.errorBoolean){
         return
       }
-      console.log('za validate')
       this.$store.commit('houses/add', house);
       this.$router.push('/')
     },
 
     validate(data){
       this.errorBoolean = false;
-      console.log(data.category === Category.ONTREE)
       if(!data.name || !data.category || !data.category){
         this.errorBoolean = true;
         this.errorMsg = 'Please fill every field';
